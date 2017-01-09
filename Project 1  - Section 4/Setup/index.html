@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Monster Slayer</title>
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+    <script src="scripts/docready.js"></script>
+    <script src="scripts/app.js"></script>
+
+    <link rel="stylesheet" href="styles/foundation.min.css">
+    <link rel="stylesheet" href="styles/app.css">
+</head>
+<body>
+<div id="app">
+    <section class="row">
+        <div class="small-6 columns">
+            <h1 class="text-center">YOU</h1>
+            <div class="healthbar">
+                <div class="healthbar text-center" v-bind:style="playerbar">{{state.player.health}}
+
+                </div>
+            </div>
+        </div>
+        <div class="small-6 columns">
+            <h1 class="text-center">MONSTER</h1>
+            <div class="healthbar">
+                <div class="healthbar text-center" v-bind:style="monsterbar">{{state.monster.health}}
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="row controls" v-if="state.game==='NEW GAME'">
+        <div class="small-12 columns">
+            <button id="start-game" v-on:click="start">START NEW GAME</button>
+        </div>
+    </section>
+    <section class="row controls" v-else>
+        <div class="small-12 columns">
+            <button id="attack" v-bind:disabled="state.game==='MONSTER TO MOVE'" v-on:click="action">ATTACK</button>
+            <button id="special-attack" v-bind:disabled="state.game==='MONSTER TO MOVE'" v-on:click="action">SPECIAL ATTACK</button>
+            <button id="heal" v-bind:disabled="state.game==='MONSTER TO MOVE'" v-on:click="action">HEAL</button>
+            <button id="give-up" v-bind:disabled="state.game==='MONSTER TO MOVE'" v-on:click="stop">GIVE UP</button>
+        </div>
+    </section>
+    <section class="row log" v-if="state.log.length > 0">
+        <div class="small-12 columns">
+            <ul>
+                <li v-for="entry in state.log" :class="{'player-turn': entry.actor==='player', 'monster-turn': entry.actor==='monster'}">{{entry.actor}} {{entry.action}} {{entry.target}} <span v-if="entry.number">for {{entry.number}}</span></li>
+            </ul>
+        </div>
+    </section>
+</div>
+</body>
+</html>

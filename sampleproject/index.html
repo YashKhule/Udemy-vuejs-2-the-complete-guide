@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>VueJS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link href="styles/main.css" rel="stylesheet" />
+
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="scripts/docready.js"></script>
+    <script src="scripts/app.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1 v-once>{{ title }}</h1>
+      <input type="text" v-on:input="update" v-bind:placeholder="defaultTitle" />
+      <p>{{ title }}</p>
+      <p v-html="raw.link"></p>
+    </div>
+  </body>
+</html>

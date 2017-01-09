@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>VueJS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link href="styles/styles.css" rel="stylesheet" />
+
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="scripts/docready.js"></script>
+    <script src="scripts/app.js"></script>
+  </head>
+  <body>
+    
+    <div id="exercise">
+      <!-- 1) Start the Effect with the Button. The Effect should alternate the "highlight" or "shrink" class on each new setInterval tick (attach respective class to the div with id "effect" below) -->
+      <div>
+        <button @click="startEffect">Start Effect</button>
+        <div id="effect" v-bind:class="decorator"></div>
+      </div>
+      <!-- 2) Create a couple of CSS classes and attach them via the array syntax -->
+      <div v-bind:class="[yin, yang]">I got no class :(</div>
+      <!-- 3) Let the user enter a class (create some example classes) and attach it -->
+      <div>
+        <input type="text" v-model="input.class">
+        <div v-bind:class="input.class">...</div>
+      </div>
+      <!-- 4) Let the user enter a class and enter true/ false for another class (create some example classes) and attach the classes -->
+      <div>
+        <input type="text" v-model="userdata.customclass">
+        <input type="text" v-model="userdata.truthy">
+        <div v-bind:class="questionfour">...</div>
+      </div>
+      <!-- 5) Repeat 3) but now with values for styles (instead of class names). Attach the respective styles.  -->
+      <div>
+        <input type="text" v-model="input.style" placeholder="background-color:gray">
+        <div v-bind:style="input.style">...</div>
+      </div>
+      <!-- 6) Create a simple progress bar with setInterval and style bindings. Start it by hitting the below button. -->
+      <div>
+        <button v-on:click="startProgress">Start Progress</button>
+        <div id="progressbar" class="outer"><div class="inner" v-bind:style="width"></div></div>
+      </div>
+    </div>
+
+  </body>
+</html>

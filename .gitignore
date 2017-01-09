@@ -1,3 +1,5 @@
+**/node_modules/
+!**/node_modules/vue/dist
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
